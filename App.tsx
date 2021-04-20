@@ -1,21 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import Wellcome from './src/Pages/Wellcome/Wellcome'
+import Apploading  from 'expo-app-loading'
+import { 
+  useFonts, 
+  Roboto_700Bold,
+  Roboto_300Light
+} from '@expo-google-fonts/roboto'
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  let [fontsLoaded] = useFonts({
+    'Bold': Roboto_700Bold,
+    'Light': Roboto_300Light
+  });
+  if(!fontsLoaded){
+    return <Apploading/>
+  } else {
+    return (
+      <Wellcome/>
+     );
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
